@@ -2,7 +2,7 @@
 
 class ExampleController{
     public function example(){
-        require 'app/Views/button.view.php';
+        require 'app/Views/example.view.php';
     }
 }
 
