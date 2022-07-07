@@ -9,7 +9,10 @@ class OrderlistController
     public function testing()
     {
         $pdo = db();
-
+        $ConcertModel = new ConcertModel();
+        
         $statementArtists = $pdo->query('SELECT artist FROM concerts');
+        
+        
     }
 }

@@ -10,6 +10,17 @@ class ConcertModel
 
         return $artists;
     }
+    
+    public function getAllOrders()
+    {
+        $pdo = db();
+
+        $statement = $pdo->query('SELECT id FROM concerts');
+        $artists = $statement->fetchAll();
+
+        return $artists;
+    }
+
 
     public function createOrder(string $prename, string $name, string $email, string $phone, int $simpathy, int $ArtistID, string $orderdate, int $amount)
     {
