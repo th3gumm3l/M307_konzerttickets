@@ -1,14 +1,9 @@
 <?php
-class FormController
+class FormViewController
 {
-    public function formMain()
+    public function formViewMain()
     {
         require 'app/Views/formView.view.php';
-    }
-
-    public function form()
-    {
-        require 'app/Views/form.view.php';
     }
 
     public function validateInputForm()
