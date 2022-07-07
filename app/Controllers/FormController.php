@@ -3,13 +3,8 @@ class FormController
 {
     public function formMain()
     {
-        $pdo = db();
-
-        $statementArtists = $pdo->query('SELECT artist FROM concerts');
-        $allArtists = $statementArtists->fetch();
-        
-        print_r($allArtists);
-
+        $ConcertModel = new ConcertModel();
+        $ArtistList = $ConcertModel->getAllArtists();
 
         require 'app/Views/formView.view.php';
     }
@@ -20,18 +15,6 @@ class FormController
         $ConcertModel = new ConcertModel();
 
         $timestamp = time();
-        $statementArtists = $pdo->query('SELECT artist FROM concerts');
-
-
-/// PROBLEM TO STRING DINGENS
-        $allArtists = $statementArtists->fetch('artist');
-        $ArtistList = [];
-        foreach ($allArtists as $Artist) {
-            $ArtistList[] = $Artist['artist'];
-        }
-        var_dump($ArtistList);
-
-
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -46,7 +29,7 @@ class FormController
 
             // ConcertDB Input
             $ArtistID = 0;
-            $artist = $_POST['artists'];
+            $artist = $_POST['artist'];
 
             // OrderDB Input
             $orderdate = date("d.m.Y", $timestamp);
@@ -75,8 +58,11 @@ class FormController
             }
 
             if (filter_var($phone, FILTER_VALIDATE_INT) === FALSE) {
-                if (str_contains($phone, '+') === true || str_contains($phone, '-') === true || str_contains($phone, '/') === true || str_contains($phone, '(') === true || str_contains($phone, ')') === true) {
-                } else {
+                if (str_contains($phone, '+') === true || str_contains($phone, '-') === true || str_contains($phone, '/') === true || str_contains($phone, '(') === true || str_contains($phone, ')') === true) 
+                {
+
+                } 
+                else {
                     $errors[] = "Phonenumber is incorrect";
                 }
             }
@@ -85,22 +71,18 @@ class FormController
                 $errors[] = "Incorrect simpathy chosen";
             }
 
-            if ($artist == '' || str_contains($allArtists, $artist) === FALSE) {
-                $errors[] = "Artist not found or not typed in";
-            }
-
             //Gibt ID des Artists
-            if (str_contains($allArtists, $artist) === TRUE) {
-                $statmentGetArtistID = $pdo->prepare('SELECT id FROM concerts WHERE artist = :artist');
-                $statmentGetArtistID->bindParam(':artist', $artist);
-                $ArtistID = $statmentGetArtistID->execute();
-            }
+            $statmentGetArtistID = $pdo->prepare('SELECT id FROM concerts WHERE artist = :artist');
+            $statmentGetArtistID->bindParam(':artist', $artist);
+            $statmentGetArtistID->execute();
+    
+            $ArtistID = $statmentGetArtistID->fetch();
 
             if ($amount <= 20 || $amount <= 1) {
                 $errors[] = "Amount out of range";
             }
 
-            $status = $ConcertModel->createOrder($prename, $name, $email, $phone, $simpathy, $ArtistID, $orderdate, $amount);
+            $status = $ConcertModel->createOrder($prename, $name, $email, $phone, $simpathy, $ArtistID['id'], $orderdate, $amount);
 
             echo $status;
         }

@@ -5,8 +5,8 @@ class ConcertModel
     {
         $pdo = db();
 
-        $statement = $pdo->query('SELECT id FROM concerts');
-        $artists = $statement->fetchAll();
+        $statement = $pdo->query('SELECT * FROM concerts');
+        $artists = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $artists;
     }
