@@ -5,4 +5,5 @@
     require 'core/Router.php';
 
     require 'app/Models/Example.php';
+    require 'app/Models/ConcertModel.php';
 ?>
