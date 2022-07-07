@@ -2,8 +2,9 @@
 require 'core/bootstrap.php';
 
 $routes = [
-	'/' => 'FormViewController@formViewMain',
-	'/validateInputForm' => 'FormViewController@validateInputForm',
+	'/' => 'FormController@formMain',
+	'/form' => 'FormController@form',
+	'/list' => 'OrderlistController@orderlist',
 	//...
 ];
 
@@ -15,5 +16,3 @@ $db = [
 
 $router = new Router($routes);
 $router->run($_GET['url'] ?? '');
-
-?>
