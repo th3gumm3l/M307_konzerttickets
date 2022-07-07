@@ -3,6 +3,14 @@ class FormController
 {
     public function formMain()
     {
+        $pdo = db();
+
+        $statementArtists = $pdo->query('SELECT artist FROM concerts');
+        $allArtists = $statementArtists->fetch();
+        
+        print_r($allArtists);
+
+
         require 'app/Views/formView.view.php';
     }
 
@@ -13,7 +21,7 @@ class FormController
 
         $timestamp = time();
         $statementArtists = $pdo->query('SELECT artist FROM concerts');
-        
+
 
 /// PROBLEM TO STRING DINGENS
         $allArtists = $statementArtists->fetch('artist');
@@ -26,6 +34,8 @@ class FormController
 
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $errors = [];
 
             // UserDB Input
             $prename = $_POST['prename'];
