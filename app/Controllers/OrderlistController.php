@@ -8,6 +8,8 @@ class OrderlistController
     
     public function testing()
     {
-        
+        $pdo = db();
+
+        $statementArtists = $pdo->query('SELECT artist FROM concerts');
     }
 }

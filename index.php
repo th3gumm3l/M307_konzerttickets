@@ -5,6 +5,7 @@ $routes = [
 	'/' => 'FormController@formMain',
 	'/form' => 'FormController@form',
 	'/list' => 'OrderlistController@orderlist',
+	'/list/test' => 'OrderlistController@test',
 	//...
 ];
 

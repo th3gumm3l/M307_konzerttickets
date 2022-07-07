@@ -43,6 +43,11 @@
     <br>
 
     <h1>List</h1>
+
+    <?php foreach ($movies as $movie):?>
+        
+    <?php endforeach?>
+
     <table>
       <tr>
         <th></th>
