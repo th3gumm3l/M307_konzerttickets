@@ -1,7 +1,7 @@
 <?php
-class FormViewController
+class FormController
 {
-    public function formViewMain()
+    public function formMain()
     {
         require 'app/Views/formView.view.php';
     }
@@ -14,6 +14,7 @@ class FormViewController
         $timestamp = time();
         $statementArtists = $pdo->query('SELECT artist FROM concerts');
         $allArtists = $statementArtists->fetchAll();
+        print_r($allArtists);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
