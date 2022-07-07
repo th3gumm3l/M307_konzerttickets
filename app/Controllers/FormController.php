@@ -13,8 +13,16 @@ class FormController
 
         $timestamp = time();
         $statementArtists = $pdo->query('SELECT artist FROM concerts');
-        $allArtists = $statementArtists->fetchAll();
-        print_r($allArtists);
+
+/// PROBLEM TO STRING DINGENS
+        $allArtists = $statementArtists->fetch('artist');
+        $ArtistList = [];
+        foreach ($allArtists as $Artist) {
+            $ArtistList[] = $Artist['artist'];
+        }
+        var_dump($ArtistList);
+
+
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
