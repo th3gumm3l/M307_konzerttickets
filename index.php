@@ -2,13 +2,12 @@
 require 'core/bootstrap.php';
 
 $routes = [
-	'/' => 'ExampleController@example',
-	'/' => 'ExampleController@example',
+	'/' => 'formViewController@formViewMain',
 	//...
 ];
 
 $db = [
-	'name'     => 'tasklist',
+	'name'     => 'kurseictbz_30714',
 	'username' => 'root',
 	'password' => '',
 ];
