@@ -2,7 +2,8 @@
 require 'core/bootstrap.php';
 
 $routes = [
-	'/' => 'formViewController@formViewMain',
+	'/' => 'FormViewController@formViewMain',
+	'/validateInputForm' => 'FormViewController@validateInputForm',
 	//...
 ];
 

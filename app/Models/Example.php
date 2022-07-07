@@ -53,7 +53,7 @@ class Example
     /**
      * Erstellt einen neuen Eintrag in der Datenbank.
      */
-    public function create(): int
+    public function create()
     {
         // Dein Code...
     }
@@ -61,7 +61,7 @@ class Example
     /**
      * Aktualisiert die aktuellen Daten in der Datenbank.
      */
-    public function update(): int
+    public function update()
     {
         // Dein Code...
     }
