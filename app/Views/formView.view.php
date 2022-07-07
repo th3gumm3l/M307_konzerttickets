@@ -28,7 +28,8 @@
 <body>
     <main>
         <nav>
-            - Navbar [links...]
+            <a href="./formView.view.php">Formular</a>
+            <a href="./orderlist.view.php">Order List</a>
         </nav>
         <br>
 
@@ -53,11 +54,10 @@
                 <legend>Concert</legend>
 
                 <label for="artists">Artists:</label> <br>
-                <select name="artists" id="artists">
-                    <option value="">Option 1</option>
-                    <option value="">Option 2</option>
-                    <option value="">Option 3</option>
-                    <option value="">Option 4</option>
+                <select name="artist" id="artist">
+                    <?php foreach ($ArtistList as $artist): ?>
+                    <option value= <?= $artist['artist'] ?> > <?= $artist['artist'] ?> </option>
+                    <?php endforeach; ?>
                 </select>
 
                 <br>

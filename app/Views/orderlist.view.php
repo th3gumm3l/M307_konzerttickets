@@ -30,6 +30,7 @@
     border: 0;
     border-collapse: collapse;
   }
+
   td {
     border: 1px solid #aaa;
   }
@@ -38,15 +39,16 @@
 <body>
   <main>
     <nav>
-      - Navbar [links...]
+      <a href="./formView.view.php">Formular</a>
+      <a href="./orderlist.view.php">Order List</a>
     </nav>
     <br>
 
     <h1>List</h1>
 
-    <?php foreach ($movies as $movie):?>
-        
-    <?php endforeach?>
+    <?php foreach ($movies as $movie) : ?>
+
+    <?php endforeach ?>
 
     <table>
       <tr>
@@ -82,7 +84,7 @@
   </main>
 </body>
 <script>
-  document.getElementById('signUpForm').onsubmit = function (evt) {
+  document.getElementById('signUpForm').onsubmit = function(evt) {
     var password = document.getElementById("pw");
     var passwordConfirm = document.getElementById("pw-rep");
     if (passwordConfirm != null) {
