@@ -8,11 +8,6 @@ class FormController
 
         require 'app/Views/formView.view.php';
     }
-    public function form()
-    
-    {
-        require 'app/Views/form.view.php';
-    }
 
     public function validateInputForm()
     {
@@ -35,10 +30,11 @@ class FormController
             // ConcertDB Input
             $ArtistID = 0;
             $artist = $_POST['artist'];
+            echo $artist; //////// Problem ist, dass nicht ganzer Array-Eintrag ausgegeben wird = The Beatles --> The
 
             // OrderDB Input
             $orderdate = date("d.m.Y", $timestamp);
-            $amount = $_POST['amount'];
+            $amount = $_POST["amount"];
 
             // Bereinigen
             trim($prename);
@@ -46,7 +42,6 @@ class FormController
             trim($email);
             trim($phone);
 
-            trim($artist);
             trim($amount);
 
             // Validieren
@@ -63,11 +58,8 @@ class FormController
             }
 
             if (filter_var($phone, FILTER_VALIDATE_INT) === FALSE) {
-                if (str_contains($phone, '+') === true || str_contains($phone, '-') === true || str_contains($phone, '/') === true || str_contains($phone, '(') === true || str_contains($phone, ')') === true) 
-                {
-
-                } 
-                else {
+                if (str_contains($phone, '+') === true || str_contains($phone, '-') === true || str_contains($phone, '/') === true || str_contains($phone, '(') === true || str_contains($phone, ')') === true) {
+                } else {
                     $errors[] = "Phonenumber is incorrect";
                 }
             }
@@ -80,11 +72,20 @@ class FormController
             $statmentGetArtistID = $pdo->prepare('SELECT id FROM concerts WHERE artist = :artist');
             $statmentGetArtistID->bindParam(':artist', $artist);
             $statmentGetArtistID->execute();
-    
+
             $ArtistID = $statmentGetArtistID->fetch();
 
-            if ($amount <= 20 || $amount <= 1) {
+            if ($amount >= 20 || $amount <= 1) {
                 $errors[] = "Amount out of range";
+            }
+
+            ///////////// Fehler Ausgabe noch machen
+            if (count($errors) != 0) {
+                header('LOCATION: /m307_konzerttickets/');
+                foreach ($errors as $error) {
+                    echo $error;
+                    echo '<br>';
+                }
             }
 
             $status = $ConcertModel->createOrder($prename, $name, $email, $phone, $simpathy, $ArtistID['id'], $orderdate, $amount);
@@ -92,6 +93,11 @@ class FormController
             echo $status;
         }
 
-        header('LOCATION: /m307_konzerttickets/formView.view.php');
+        header('LOCATION: /m307_konzerttickets/');
+    }
+
+    public function CalcPaymentTerm()
+    {
+        # code...
     }
 }

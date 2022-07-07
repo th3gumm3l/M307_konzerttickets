@@ -62,8 +62,4 @@ class ConcertModel
         # code...
     }
 
-    public function delete()
-    {
-        # code...
-    }
 }
