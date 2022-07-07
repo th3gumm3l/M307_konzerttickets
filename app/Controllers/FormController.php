@@ -80,7 +80,7 @@ class FormViewController
                 $errors[] = "Amount out of range";
             }
 
-            $status = $ConcertModel->createOrder($prename, $name, $email, $phone, $simpathy, $ArtistID, $artist, $orderdate, $amount);
+            $status = $ConcertModel->createOrder($prename, $name, $email, $phone, $simpathy, $ArtistID, $orderdate, $amount);
 
             echo $status;
         }

@@ -11,7 +11,7 @@ class ConcertModel
         return $artists;
     }
 
-    public function createOrder(string $prename, string $name, string $email, string $phone, int $simpathy, int $ArtistID, string $artist, string $orderdate, int $amount)
+    public function createOrder(string $prename, string $name, string $email, string $phone, int $simpathy, int $ArtistID, string $orderdate, int $amount)
     {
         $pdo = db();
         try {
