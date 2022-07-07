@@ -33,27 +33,27 @@
         <br>
 
         <h1>Forms</h1>
-        <form action="" method="post">
+        <form action="#" id="ConcertForm" >
             <fieldset>
                 <legend>Person</legend>
                 <label for="name">Name:</label> <br>
-                <input type="text" id="name" name="name"><br>
+                <input type="text" id="name" name="name" required><br>
 
                 <label for="prename">Prename:</label> <br>
-                <input type="text" id="prename" name="prename"><br>
+                <input type="text" id="prename" name="prename" required><br>
 
                 <label for="phone">Phone:</label> <br>
                 <input type="text" id="phone" name="phone"><br>
 
                 <label for="email">Email:</label> <br>
-                <input type="email" id="email" name="email"><br>
+                <input type="email" id="email" name="email" required><br>
                 <br>
             </fieldset>
             <fieldset>
                 <legend>Concert</legend>
 
                 <label for="artists">Artists:</label> <br>
-                <select name="artists" id="artists">
+                <select name="artists" id="artists" required>
                     <option value="">Option 1</option>
                     <option value="">Option 2</option>
                     <option value="">Option 3</option>
@@ -63,7 +63,7 @@
                 <br>
 
                 <label for="amount">Amount:</label> <br>
-                <input type="number" name="amount" id="amount" min="1"><br>
+                <input type="number" name="amount" id="amount" min="1" required><br>
 
                 <label for="simpathy">Simpathy:</label> <br>
                 <input type="radio" id="dc0" name="simpathy" value="0" checked>
@@ -79,6 +79,7 @@
         </form>
 
         <h1>Overview</h1>
+        <form>
         <fieldset>
             <legend>Person</legend>
             <label for="name">Name:</label> <br>
@@ -110,8 +111,9 @@
         <input type="submit" name="submit" value="Overview">
         </form>
         <button>Discard</button>
-
     </main>
+    <script src="./public/js/validForm.js"></script>
+    <script src="./../../public/js/validForm.js"></script>
 </body>
 
 </html>

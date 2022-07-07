@@ -5,6 +5,11 @@ class FormController
     {
         require 'app/Views/formView.view.php';
     }
+    public function form()
+    
+    {
+        require 'app/Views/form.view.php';
+    }
 
     public function validateInputForm()
     {
