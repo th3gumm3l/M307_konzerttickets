@@ -33,23 +33,28 @@ class ConcertModel
             $statementUsers->bindParam(':email', $email);
             $statementUsers->bindParam(':phone', $phone);
             $statementUsers->bindParam(':simpathy', $simpathy);
+
+            $statementUsers->execute();
     
-            $latestUserID = $pdo->lastInsertId();
+            $latestUserID = $pdo->lastInsertId(); 
             $paymentterm = 0; //Wird noch ausprogrammiert
     
             $statementOrders = $pdo->prepare('INSERT INTO orders (orderdate, amount, paymentterm, fk_concertID, fk_userID) VALUES (:orderdate, :amount, :paymentterm, :fk_concertID, :fk_userID)');
-            $statementOrders->bindParam('orderdate', $orderdate);
-            $statementOrders->bindParam('amount', $amount);
-            $statementOrders->bindParam('paymentterm', $paymentterm);
-            $statementOrders->bindParam('fk_concertID', $ArtistID);
-            $statementOrders->bindParam('fk_userID', $latestUserID);
+            $statementOrders->bindParam(':orderdate', $orderdate);
+            $statementOrders->bindParam(':amount', $amount);
+            $statementOrders->bindParam(':paymentterm', $paymentterm);
+            $statementOrders->bindParam(':fk_concertID', $ArtistID);
+            $statementOrders->bindParam(':fk_userID', $latestUserID);
 
-            return "hat funktioniert";
+            $statementOrders->execute();
         } 
+
         catch (\Throwable $th) 
         {
             return $th;
         }
+        
+        return "hat funktioniert";
     }
 
     public function update()

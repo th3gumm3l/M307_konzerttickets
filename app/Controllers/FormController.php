@@ -13,6 +13,7 @@ class FormController
 
         $timestamp = time();
         $statementArtists = $pdo->query('SELECT artist FROM concerts');
+        
 
 /// PROBLEM TO STRING DINGENS
         $allArtists = $statementArtists->fetch('artist');

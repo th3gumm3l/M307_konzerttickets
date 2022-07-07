@@ -14,10 +14,11 @@
         font-family: 'Courier New', Courier, monospace;
     }
 
-    body{
+    body {
         margin-left: 20px;
         margin-right: 20px;
     }
+
     nav {
         width: 100%;
         background-color: lightgray;
@@ -76,7 +77,7 @@
             </fieldset>
             <input type="submit" name="submit" value="Overview">
         </form>
-        
+
         <h1>Overview</h1>
         <fieldset>
             <legend>Person</legend>
@@ -107,8 +108,8 @@
             <label>discount</label> <br>
         </fieldset>
         <input type="submit" name="submit" value="Overview">
-    </form>
-    <button>Discard</button>
+        </form>
+        <button>Discard</button>
 
     </main>
 </body>
