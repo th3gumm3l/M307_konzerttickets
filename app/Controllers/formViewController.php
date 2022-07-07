@@ -12,16 +12,12 @@ class FormViewController
         $ConcertModel = new ConcertModel();
 
         $timestamp = time();
-        $statementArtists = $pdo->query('SELECT artists FROM concerts');
+        $statementArtists = $pdo->query('SELECT artist FROM concerts');
         $allArtists = $statementArtists->fetchAll();
-
-        $statementUsers = $pdo->query('SELECT users FROM concerts');
-        $allUsers = $statementUsers->fetchAll();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // UserDB Input
-            $userid = 0;
             $prename = $_POST['prename'];
             $name = $_POST['name'];
             $email = $_POST['email'];
@@ -46,10 +42,6 @@ class FormViewController
             trim($amount);
 
             // Validieren
-            if (count($allUsers) == 0) {
-                $userid = 0;
-            }
-
             if ($prename == '') {
                 $errors[] = "Prename is missing";
             }
@@ -88,7 +80,11 @@ class FormViewController
                 $errors[] = "Amount out of range";
             }
 
-            $ConcertModel->createOrder($userid, $prename, $name, $email, $phone, $simpathy, $ArtistID, $artist, $orderdate, $amount);
+            $status = $ConcertModel->createOrder($prename, $name, $email, $phone, $simpathy, $ArtistID, $artist, $orderdate, $amount);
+
+            echo $status;
         }
+
+        header('LOCATION: /m307_konzerttickets/formView.view.php');
     }
 }
