@@ -3,6 +3,7 @@ require 'core/bootstrap.php';
 
 $routes = [
 	'/' => 'ExampleController@example',
+	'/' => 'ExampleController@example',
 	//...
 ];
 
