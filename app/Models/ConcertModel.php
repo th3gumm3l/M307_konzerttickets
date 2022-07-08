@@ -72,7 +72,7 @@ class ConcertModel
             $statementUser->bindParam(':prename', $newuserprename);
             $statementUser->bindParam(':name', $newusername);
             $statementUser->bindParam(':email', $newuseremail);
-            $statementUser->bindParam(':prename', $newuserprename);
+            $statementUser->bindParam(':phone', $newuserphone);
             $statementUser->bindParam(':id', $userid);
             $statementUser->execute();
 
