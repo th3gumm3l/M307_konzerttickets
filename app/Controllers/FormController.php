@@ -26,18 +26,18 @@ class FormController
             $errors = [];
 
             // UserDB Input
-            $prename = $_POST['prename'];
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $phone = $_POST['phone'] ?? '';
+            $prename = $_POST['prename_export'];
+            $name = $_POST['name_export'];
+            $email = $_POST['email_export'];
+            $phone = $_POST['phone_export'] ?? '';
 
 
             // ConcertDB Input
-            $ArtistID = $_POST['artist'];
+            $ArtistID = $_POST['artist_export'];
 
             // OrderDB Input
             $orderdate = date("Y.m.d", $timestamp);
-            $amount = $_POST["amount"];
+            $amount = $_POST["amount_export"];
 
             // Bereinigen
             trim($prename);

@@ -77,7 +77,7 @@
         </div>
         <div>
             <h1>Overview</h1>
-            <form class="group" method="POST" action="validateInputForm">
+            <form class="group" id="ConcertForm" method="POST" action="validateInputForm">
                 <fieldset class="noborder">
                     <legend class="invis">Person</legend>
 
