@@ -13,8 +13,8 @@
 
 <body class="background">
     <nav class="card">
-        <a class="navlink" href="/m307_konzerttickets/form">Formular</a>
-        <a class="navlink" href="/m307_konzerttickets/list">Order List</a>
+        <a class="navlink" href="m307_2/konzerttickets_tim_yannic/form">Formular</a>
+        <a class="navlink" href="m307_2/konzerttickets_tim_yannic/list">Order List</a>
     </nav>
     <div class="card edit">
         <h1>Edit</h1>
