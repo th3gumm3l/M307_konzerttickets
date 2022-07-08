@@ -6,22 +6,40 @@ class OrderlistController
         $pdo = db();
         $ConcertModel = new ConcertModel();
 
-        $statement = db()->prepare('SELECT * FROM orders WHERE NOT payed');
-        $result = $statement->fetchAll();
+        $stmtOrder = $pdo->query('SELECT * FROM orders');
+        $orders = $stmtOrder->fetchAll(PDO::FETCH_ASSOC);
 
-        //$statementArtists = $pdo->query('SELECT artist FROM concerts');
+        $stmtConcert = $pdo->query('SELECT * FROM concerts');
+        $artists = $stmtConcert->fetchAll(PDO::FETCH_ASSOC);
+
+        $artistlist = [];
+        foreach ($artists as $artist) {
+            $artistlist[$artist['id']]=$artist['artist'];
+        }
+
+        $stmtUser = $pdo->query('SELECT * FROM users');
+        $users = $stmtUser->fetchAll(PDO::FETCH_ASSOC);
+
+        $usernames = [];
+        foreach ($users as $user) {
+            $usernames[$user['id']]=$user['name'];
+        }
+
+        $userprenames = [];
+        foreach ($users as $user) {
+            $userprenames[$user['id']]=$user['prename'];
+        }
+
+        $useremails = [];
+        foreach ($users as $user) {
+            $useremails[$user['id']]=$user['email'];
+        }
+
+        $userphones = [];
+        foreach ($users as $user) {
+            $userphones[$user['id']]=$user['phone'];
+        }
         
         require 'app/Views/list.view.php';
-    }
-    
-    public function edit()
-    {
-        $pdo = db();
-        $ConcertModel = new ConcertModel();
-        
-        $statementArtists = $pdo->query('SELECT artist FROM concerts');
-        
-
-        require 'app/Views/edit.view.php';
     }
 }
