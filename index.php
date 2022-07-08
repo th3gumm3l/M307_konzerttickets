@@ -2,6 +2,7 @@
 require 'core/bootstrap.php';
 
 $routes = [
+	'/' => 'FormController@form',
 	'/validateInputForm' => 'FormController@validateInputForm',
 	'/list' => 'OrderlistController@orderlist',
 	'/form' => 'FormController@form',
@@ -11,8 +12,8 @@ $routes = [
 
 $db = [
 	'name'     => 'kurseictbz_30714',
-	'username' => 'root',
-	'password' => '',
+	'username' => 'kurseictbz_30714',
+	'password' => 'db_307_pw_14',
 ];
 
 $router = new Router($routes);
