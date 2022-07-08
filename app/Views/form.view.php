@@ -32,7 +32,7 @@
                     <div class="colum">
                         <label class="incolum" for="prename">Prename:</label>
                         <input class="incolum0" type="text" id="prename" name="prename" maxlength="190" placeholder="Muster">
-                        <p class="incolum1"id="prename_err"> </p>
+                        <p class="incolum1" id="prename_err"> </p>
                     </div>
                     <div class="colum">
                         <label class="incolum" for="phone">Phone:</label>
@@ -52,9 +52,9 @@
                     <div class="colum">
                         <label class="incolum" for="artists">Artists:</label>
                         <select class="incolum2" name="artist" id="artist">
-                        <?php foreach ($ArtistList as $artist): ?>
-                            <option value= <?= $artist['id'] ?> > <?= $artist['artist'] ?> </option>
-                        <?php endforeach; ?>
+                            <?php foreach ($ArtistList as $artist) : ?>
+                                <option value=<?= $artist['id'] ?>> <?= $artist['artist'] ?> </option>
+                            <?php endforeach; ?>
                         </select>
                         <p class="incolum1" id="artist_err"></p>
                     </div>
@@ -81,21 +81,21 @@
             <form class="group">
                 <fieldset class="noborder">
                     <legend class="invis">Person</legend>
-                    
+
                     <div class="colum">
-                        <label class="incolum"  for="name">Name:</label>
+                        <label class="incolum" for="name">Name:</label>
                         <input class="incolum0" type="text" id="name_export" name="name_export" disabled>
                     </div>
                     <div class="colum">
-                        <label class="incolum" >Prename:</label>
+                        <label class="incolum">Prename:</label>
                         <input class="incolum0" type="text" id="prename_export" name="prename_export" disabled>
                     </div>
                     <div class="colum">
-                        <label class="incolum" >Phone:</label>
+                        <label class="incolum">Phone:</label>
                         <input class="incolum0" type="text" id="phone_export" name="phone_export" disabled>
                     </div>
                     <div class="colum">
-                        <label class="incolum" >Email:</label>
+                        <label class="incolum">Email:</label>
                         <input class="incolum0" type="email" id="email_export" name="email_export" disabled>
                     </div>
 
@@ -104,24 +104,24 @@
                     <legend class="invis">Concert</legend>
 
                     <div class="colum">
-                        <label class="incolum" >Artists:</label>
+                        <label class="incolum">Artists:</label>
                         <input class="incolum0" type="text" id="artists_export" name="artists_export" disabled>
                     </div>
                     <div class="colum">
-                        <label class="incolum" >Amount:</label>
+                        <label class="incolum">Amount:</label>
                         <input class="incolum0" type="number" name="amount_export" id="amount_export" min="1" disabled>
                     </div>
                     <div class="colum">
-                        <label class="incolum" >Simpathy:</label>
+                        <label class="incolum">Simpathy:</label>
                         <input class="incolum0" type="text" id="simpathy_export" name="simpathy_export" disabled>
                     </div>
                     <div class="colum">
-                        <label class="incolum" >Purchasing date:</label>
+                        <label class="incolum">Purchasing date:</label>
                         <input class="incolum0" type="date" id="purchas_export" name="purchas_export" disabled>
-                        
+
                     </div>
                     <div class="colum">
-                        <label class="incolum" >Payment deadline:</label>
+                        <label class="incolum">Payment deadline:</label>
                         <input class="incolum0" type="date" id="payment_export" name="payment_export" disabled>
                     </div>
 
@@ -133,9 +133,7 @@
     </div>
     <script src="./public/js/validForm.js"></script>
     <script>
-        if (<?= $alert ?> != "") {
-            alert("<?= $alert ?>")
-        } 
+        alert("<?= $alert ?>");
     </script>
 </body>
 

@@ -6,16 +6,19 @@ class FormController
         $ConcertModel = new ConcertModel();
         $ArtistList = $ConcertModel->getAllArtists();
         
-        $alert = $_GET['alert'];
+        $alertvar = $_GET['alert'] ?? null;
+        if ($alertvar != null) {
+            $alert = $alertvar;
+        }
         
         require 'app/Views/form.view.php';
+        
     }
 
     public function validateInputForm()
     {
         $pdo = db();
         $ConcertModel = new ConcertModel();
-        $status = "OK";
         $timestamp = time();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -69,11 +72,8 @@ class FormController
 
             ///////////// Fehler Ausgabe noch machen
             if (count($errors) != 0) {
-                header('LOCATION: /m307_konzerttickets/');
-                foreach ($errors as $error) {
-                    echo $error;
-                    echo '<br>';
-                }
+                $alert = "Failed";
+                header('LOCATION: /m307_konzerttickets/form?alert='.$alert);
             }
 
             $status = $ConcertModel->createOrder($prename, $name, $email, $phone, $ArtistID, $orderdate, $amount);
@@ -82,6 +82,7 @@ class FormController
 
         if ($status != "OK") {
             $alert = "Failed";
+            header('LOCATION: /m307_konzerttickets/form?alert='.$alert);
         }
         else {
             $alert = "Sent";
