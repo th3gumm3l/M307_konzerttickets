@@ -72,7 +72,7 @@
                         </select>
                     </div>
                 </fieldset>
-                <input class="point" type="submit" name="submit" value="Overview" class="wid100">
+                <input id="confirmOverview" type="submit" name="submit" value="Overview" class="point">
             </form>
         </div>
         <div>
@@ -116,17 +116,17 @@
                     </div>
                     <div class="colum">
                         <label class="incolum">Purchasing date:</label>
-                        <input class="incolum0" type="date" id="purchas_export" name="purchas_export" disabled>
+                        <input class="incolum0" type="text" id="purchas_export" name="purchas_export" disabled>
 
                     </div>
                     <div class="colum">
                         <label class="incolum">Payment deadline:</label>
-                        <input class="incolum0" type="date" id="payment_export" name="payment_export" disabled>
+                        <input class="incolum0" type="text" id="payment_export" name="payment_export" disabled>
                     </div>
 
                 </fieldset>
-                <button class="nopoint btnOverview" disabled>Discard</button>
-                <input class="btnOverview" type="submit" name="submit" value="Transmit">
+                <button id="btnDiscard" class="point btnOverview" onclick="btnDiscardKlick()" disabled>Discard</button>
+                <input id="btnTransmit" class="btnOverview" type="submit" name="submit" value="Transmit" disabled>
             </form>
         </div>
     </div>

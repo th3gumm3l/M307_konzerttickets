@@ -23,12 +23,8 @@ document.getElementById('ConcertForm').onsubmit = function (evt) {
     //name
     //console.log(error_name);
     if(error_name == undefined) error_name = checkEmpty(name, "Name");
-    console.log("error_name");
-    console.log(error_name);
     if(error_name == undefined) error_name = checklength(name, "Name", 20);
-    console.log(error_name);
     if(error_name == undefined) error_name = checkSpecialChars(name, "Name");
-    console.log(error_name);
     //prename
     if(error_prename == undefined) error_prename = checkEmpty(prename, "Prename");
     if(error_prename == undefined) error_prename = checklength(prename, "Prename", 30);
@@ -40,8 +36,8 @@ document.getElementById('ConcertForm').onsubmit = function (evt) {
     if(error_mail == undefined) error_mail = checklength(mail, "Mail", 30);
     if(error_mail == undefined) error_mail = checkMail(mail);
     //amount
-    //if(error_amount == undefined) error_amount = checkNumberBetween(amount, "Amount", 1, 20);
-    //if(error_amount == undefined) error_amount = checkEmpty(amount, "Amount");
+    if(error_amount == undefined) error_amount = checkEmpty(amount, "Amount");
+    if(error_amount == undefined) error_amount = checkNumberBetween(amount, "Amount", 1, 20);
 
     
     if (error_name != undefined || error_prename != undefined || error_phone != undefined || error_mail != undefined || error_amount != undefined) {
@@ -71,11 +67,23 @@ document.getElementById('ConcertForm').onsubmit = function (evt) {
         document.getElementById("artist_export").value = eArt.options[eArt.selectedIndex].text;
         document.getElementById("simpathy_export").value = eSim.options[eSim.selectedIndex].text +" (="+ days + " days)";
         document.getElementById("purchas_export").value = new Date().toISOString().slice(0, 10);
+        document.getElementById("payment_export").value = addDays(document.getElementById("purchas_export").value, days);
 
 
+        document.getElementById("confirmOverview").setAttribute("disabled", true);
+        document.getElementById("name").setAttribute("disabled", true);
+        document.getElementById("prename").setAttribute("disabled", true);
+        document.getElementById("phone").setAttribute("disabled", true);
+        document.getElementById("email").setAttribute("disabled", true);
+        document.getElementById("amount").setAttribute("disabled", true);
+        document.getElementById("artist").setAttribute("disabled", true);
+        document.getElementById("simpathy").setAttribute("disabled", true);
+        
+        document.getElementById("btnDiscard").removeAttribute('disabled');
+        document.getElementById("btnTransmit").removeAttribute('disabled');
 
-        document.getElementById("payment_export").value = addDays(document.getElementById("purchas_export").value, days)
     }
+
     evt.preventDefault();
 }
 
@@ -95,14 +103,12 @@ function checklength(obj, objName, objMaxlength) {
 function checkSpecialChars(obj, objName) {
 
     let specialChars = `-,:;?!<>'"()[]{}!@#$%^&*+`
-    let IsSpecialCharsProof = true;
+    let IsSpecialCharsProof = 0;
 
     for (const c of obj) {
-        if (specialChars.includes(c)) nameIsSpecialCharsProof = false;
-        console.log(specialChars.includes(c))
+        if (specialChars.includes(c)) IsSpecialCharsProof++;
     }
-
-    if (!IsSpecialCharsProof) {
+    if (IsSpecialCharsProof != 0) {
         return objName + " cannot contain the following symbols: " + specialChars;
     }
 }
@@ -110,13 +116,13 @@ function checkSpecialChars(obj, objName) {
 function checkPhoneNumber(obj, objName) {
 
     let specialChars = `+-/()0123456789`
-    let IsSpecialCharsProof = true;
+    let IsSpecialCharsProof = 0;
 
     for (const c of obj) {
-        if (!specialChars.includes(c)) nameIsSpecialCharsProof = false;
+        if (!specialChars.includes(c)) IsSpecialCharsProof++;
     }
 
-    if (!IsSpecialCharsProof) {
+    if (IsSpecialCharsProof != 0) {
         return objName + " can only contain the following symbols: " + specialChars;
     }
 }
@@ -130,16 +136,26 @@ function checkMail(obj) {
 }
 
 function checkNumberBetween(obj, objName, min, max) {
-    if (obj <= min) {
+    if (obj < min) {
         return objName + " is too large";
-    } else if (obj >= max) {
+    } else if (obj > max) {
         return objName + " is too small";
     }
 }
-
 
 function addDays(date, days) {
     var result = new Date(date);
     result.setDate(result.getDate() + days);
     return result.toISOString().slice(0, 10);
+}
+
+function btnDiscardKlick(){
+    document.getElementById("confirmOverview").removeAttribute('disabled');
+    document.getElementById("name").removeAttribute('disabled');
+    document.getElementById("prename").removeAttribute('disabled');
+    document.getElementById("phone").removeAttribute('disabled');
+    document.getElementById("email").removeAttribute('disabled');
+    document.getElementById("amount").removeAttribute('disabled');
+    document.getElementById("artist").removeAttribute('disabled');
+    document.getElementById("simpathy").removeAttribute('disabled');
 }
