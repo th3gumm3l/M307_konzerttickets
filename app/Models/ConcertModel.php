@@ -10,7 +10,7 @@ class ConcertModel
 
         return $artists;
     }
-    
+
     public function getAllOrders()
     {
         $pdo = db();
@@ -22,43 +22,32 @@ class ConcertModel
     }
 
 
-    public function createOrder(string $prename, string $name, string $email, string $phone, int $ArtistID, string $orderdate, int $amount)
+    public function createOrder(string $prename, string $name, string $email, string $phone, $ArtistID, string $orderdate, int $amount)
     {
         $pdo = db();
-        try {
-            // Verarbeiten
-            $statementUsers = $pdo->prepare('INSERT INTO users (prename, `name`, email, phone) VALUES (:prename, :name, :email, :phone)');
-            $statementUsers->bindParam(':prename', $prename);
-            $statementUsers->bindParam(':name', $name);
-            $statementUsers->bindParam(':email', $email);
-            $statementUsers->bindParam(':phone', $phone);
+        // Verarbeiten
+        $statementUsers = $pdo->prepare('INSERT INTO users (prename, `name`, email, phone) VALUES (:prename, :name, :email, :phone)');
+        $statementUsers->bindParam(':prename', $prename);
+        $statementUsers->bindParam(':name', $name);
+        $statementUsers->bindParam(':email', $email);
+        $statementUsers->bindParam(':phone', $phone);
 
-            $statementUsers->execute();
-    
-            $latestUserID = $pdo->lastInsertId(); 
-            $paymentterm = 0; //Wird noch ausprogrammiert
-    
-            $statementOrders = $pdo->prepare('INSERT INTO orders (orderdate, amount, paymentterm, fk_concertID, fk_userID) VALUES (:orderdate, :amount, :paymentterm, :fk_concertID, :fk_userID)');
-            $statementOrders->bindParam(':orderdate', $orderdate);
-            $statementOrders->bindParam(':amount', $amount);
-            $statementOrders->bindParam(':paymentterm', $paymentterm);
-            $statementOrders->bindParam(':fk_concertID', $ArtistID);
-            $statementOrders->bindParam(':fk_userID', $latestUserID);
+        $statementUsers->execute();
 
-            $statementOrders->execute();
+        $latestUserID = $pdo->lastInsertId();
+        $paymentterm = 0; //Wird noch ausprogrammiert
 
-            $status = "OK";
-            return $status;
-        } 
+        $statementOrders = $pdo->prepare('INSERT INTO orders (orderdate, amount, paymentterm, fk_concertID, fk_userID) VALUES (:orderdate, :amount, :paymentterm, :fk_concertID, :fk_userID)');
+        $statementOrders->bindParam(':orderdate', $orderdate);
+        $statementOrders->bindParam(':amount', $amount);
+        $statementOrders->bindParam(':paymentterm', $paymentterm);
+        $statementOrders->bindParam(':fk_concertID', $ArtistID);
+        $statementOrders->bindParam(':fk_userID', $latestUserID);
 
-        catch (\Throwable $th) 
-        {
-            $status = "Failed";
-            return $status;
-        }
+        $statementOrders->execute();
     }
 
-    public function update(int $userid, int $orderid, string $newusername,string $newuserprename, string $newuseremail, string $newuserphone, int $newpaystatus)
+    public function update(int $userid, int $orderid, string $newusername, string $newuserprename, string $newuseremail, string $newuserphone, int $newpaystatus)
     {
         $pdo = db();
 
@@ -78,11 +67,9 @@ class ConcertModel
 
             $status = "OK";
             return $status;
-        } 
-        catch (\Throwable $th) {
+        } catch (\Throwable $th) {
             $status = "Failed";
             return $status;
         }
     }
-
 }
