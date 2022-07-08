@@ -22,17 +22,16 @@ class ConcertModel
     }
 
 
-    public function createOrder(string $prename, string $name, string $email, string $phone, int $simpathy, int $ArtistID, string $orderdate, int $amount)
+    public function createOrder(string $prename, string $name, string $email, string $phone, int $ArtistID, string $orderdate, int $amount)
     {
         $pdo = db();
         try {
             // Verarbeiten
-            $statementUsers = $pdo->prepare('INSERT INTO users (prename, `name`, email, phone, simpathy) VALUES (:prename, :name, :email, :phone, :simpathy)');
+            $statementUsers = $pdo->prepare('INSERT INTO users (prename, `name`, email, phone) VALUES (:prename, :name, :email, :phone)');
             $statementUsers->bindParam(':prename', $prename);
             $statementUsers->bindParam(':name', $name);
             $statementUsers->bindParam(':email', $email);
             $statementUsers->bindParam(':phone', $phone);
-            $statementUsers->bindParam(':simpathy', $simpathy);
 
             $statementUsers->execute();
     
