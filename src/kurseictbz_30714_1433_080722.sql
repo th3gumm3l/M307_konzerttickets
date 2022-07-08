@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 07. Jul 2022 um 16:11
+-- Erstellungszeit: 08. Jul 2022 um 14:33
 -- Server-Version: 10.4.24-MariaDB
 -- PHP-Version: 8.1.6
 
@@ -138,9 +138,18 @@ CREATE TABLE `orders` (
   `amount` int(11) NOT NULL,
   `payed` tinyint(1) NOT NULL DEFAULT 0,
   `paymentterm` int(11) NOT NULL,
+  `paymentdate` varchar(255) NOT NULL,
+  `overdue` varchar(255) NOT NULL,
   `fk_concertID` int(11) NOT NULL,
   `fk_userID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `orders`
+--
+
+INSERT INTO `orders` (`id`, `orderdate`, `amount`, `payed`, `paymentterm`, `paymentdate`, `overdue`, `fk_concertID`, `fk_userID`) VALUES
+(13, '2022-07-08', 3, 0, 0, 'd', 'd', 11, 13);
 
 -- --------------------------------------------------------
 
@@ -154,9 +163,15 @@ CREATE TABLE `users` (
   `prename` varchar(190) NOT NULL,
   `name` varchar(190) NOT NULL,
   `email` varchar(190) NOT NULL,
-  `phone` int(11) NOT NULL,
-  `simpathy` int(11) NOT NULL
+  `phone` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `users`
+--
+
+INSERT INTO `users` (`id`, `prename`, `name`, `email`, `phone`) VALUES
+(13, 'Tim', 'Bernhard', 'tim.bernhard@me.com', '0763446047');
 
 --
 -- Indizes der exportierten Tabellen
@@ -196,13 +211,13 @@ ALTER TABLE `concerts`
 -- AUTO_INCREMENT für Tabelle `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT für Tabelle `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints der exportierten Tabellen
