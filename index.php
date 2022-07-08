@@ -2,7 +2,7 @@
 require 'core/bootstrap.php';
 
 $routes = [
-	'/' => 'FormController@formMain',
+//	'/' => 'FormController@formMain',
 	'/validateInputForm' => 'FormController@validateInputForm',
 	'/list' => 'OrderlistController@orderlist',
 	'/form' => 'FormController@form',

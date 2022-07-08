@@ -20,7 +20,7 @@
     <div class="card form">
         <div>
             <h1>Form</h1>
-            <form action="validateInputForm" id="ConcertForm">
+            <form action="validateInputForm" id="ConcertForm" method="POST">
                 <fieldset class="noborder group">
                     <legend class="invis">Person</legend>
 
@@ -49,13 +49,13 @@
                 </fieldset>
                 <fieldset class="noborder group">
                     <legend class="invis">Concert</legend>
-                    
+
                     <div class="colum">
                         <label for="artists">Artists:</label> <br>
                         <select name="artist" id="artist">
-                        <?php foreach ($ArtistList as $artist): ?>
-                            <option value= <?= $artist['id'] ?> > <?= $artist['artist'] ?> </option>
-                        <?php endforeach; ?>
+                            <?php foreach ($ArtistList as $artist) : ?>
+                                <option value=<?= $artist['id'] ?>> <?= $artist['artist'] ?> </option>
+                            <?php endforeach; ?>
                         </select>
                         <br>
                     </div>
@@ -122,6 +122,11 @@
         </div>
     </div>
     <script src="./public/js/validForm.js"></script>
+    <script>
+        if (<?= $alert ?> != "") {
+            alert("<?= $alert ?>")
+        } 
+    </script>
 </body>
 
 </html>

@@ -46,14 +46,16 @@ class ConcertModel
             $statementOrders->bindParam(':fk_userID', $latestUserID);
 
             $statementOrders->execute();
+
+            $status = "OK";
+            return $status;
         } 
 
         catch (\Throwable $th) 
         {
-            return $th;
+            $status = "Failed";
+            return $status;
         }
-        
-        return "hat funktioniert";
     }
 
     public function update()
