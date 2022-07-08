@@ -36,9 +36,8 @@ class FormController
             $simpathy = $_POST['simpathy'];
 
             // ConcertDB Input
-            $ArtistID = 0;
-            $artist = $_POST['artist'];
-            echo $artist; //////// Problem ist, dass nicht ganzer Array-Eintrag ausgegeben wird = The Beatles --> The
+            $ArtistID = $_POST['artist'];
+            echo $ArtistID; //////// Problem ist, dass nicht ganzer Array-Eintrag ausgegeben wird = The Beatles --> The
 
             // OrderDB Input
             $orderdate = date("d.m.Y", $timestamp);
@@ -65,23 +64,14 @@ class FormController
                 $errors[] = "Email missing or incorrect";
             }
 
-            if (filter_var($phone, FILTER_VALIDATE_INT) === FALSE) {
-                if (str_contains($phone, '+') === true || str_contains($phone, '-') === true || str_contains($phone, '/') === true || str_contains($phone, '(') === true || str_contains($phone, ')') === true) {
-                } else {
-                    $errors[] = "Phonenumber is incorrect";
-                }
+            if (str_contains($phone, '+') === true || str_contains($phone, '-') === true || str_contains($phone, '/') === true || str_contains($phone, '(') === true || str_contains($phone, ')') === true) {
+            } else {
+                $errors[] = "Phonenumber is incorrect";
             }
 
             if ($simpathy < 0 || $simpathy > 3) {
                 $errors[] = "Incorrect simpathy chosen";
             }
-
-            //Gibt ID des Artists
-            $statmentGetArtistID = $pdo->prepare('SELECT id FROM concerts WHERE artist = :artist');
-            $statmentGetArtistID->bindParam(':artist', $artist);
-            $statmentGetArtistID->execute();
-
-            $ArtistID = $statmentGetArtistID->fetch();
 
             if ($amount >= 20 || $amount <= 1) {
                 $errors[] = "Amount out of range";
@@ -96,7 +86,7 @@ class FormController
                 }
             }
 
-            $status = $ConcertModel->createOrder($prename, $name, $email, $phone, $simpathy, $ArtistID['id'], $orderdate, $amount);
+            $status = $ConcertModel->createOrder($prename, $name, $email, $phone, $ArtistID, $orderdate, $amount);
 
             echo $status;
         }

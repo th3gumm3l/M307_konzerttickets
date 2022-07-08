@@ -56,7 +56,7 @@
                 <label for="artists">Artists:</label> <br>
                 <select name="artist" id="artist">
                     <?php foreach ($ArtistList as $artist): ?>
-                    <option value= <?= $artist['artist'] ?> > <?= $artist['artist'] ?> </option>
+                    <option value= <?= $artist['id'] ?> > <?= $artist['artist'] ?> </option>
                     <?php endforeach; ?>
                 </select>
 

@@ -20,7 +20,7 @@
     <div class="card form">
         <div>
             <h1>Form</h1>
-            <form action="#" id="ConcertForm">
+            <form action="validateInputForm" id="ConcertForm">
                 <fieldset class="noborder group">
                     <legend class="invis">Person</legend>
 
@@ -53,7 +53,7 @@
                         <label class="incolum" for="artists">Artists:</label>
                         <select class="incolum2" name="artist" id="artist">
                         <?php foreach ($ArtistList as $artist): ?>
-                            <option value= <?= $artist['artist'] ?> > <?= $artist['artist'] ?> </option>
+                            <option value= <?= $artist['id'] ?> > <?= $artist['artist'] ?> </option>
                         <?php endforeach; ?>
                         </select>
                         <p class="incolum1" id="artist_err"></p>
