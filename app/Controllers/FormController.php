@@ -11,6 +11,8 @@ class FormController
     public function form()
     
     {
+        $ConcertModel = new ConcertModel();
+        $ArtistList = $ConcertModel->getAllArtists();
         require 'app/Views/form.view.php';
     }
 

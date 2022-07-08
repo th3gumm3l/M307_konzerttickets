@@ -3,16 +3,16 @@ class OrderlistController
 {
     public function orderlist()
     {
-        require 'app/Views/orderlist.view.php';
+        require 'app/Views/list.view.php';
     }
     
-    public function testing()
+    public function edit()
     {
         $pdo = db();
         $ConcertModel = new ConcertModel();
         
         $statementArtists = $pdo->query('SELECT artist FROM concerts');
         
-        
+        require 'app/Views/edit.view.php';
     }
 }
