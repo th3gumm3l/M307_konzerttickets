@@ -1,19 +1,13 @@
 <?php
 class FormController
-{   
-    
-    public function formMain()
-    {
-        $ConcertModel = new ConcertModel();
-        $ArtistList = $ConcertModel->getAllArtists();
-
-        require 'app/Views/formView.view.php';
-    }
-
+{
     public function form()
     {
         $ConcertModel = new ConcertModel();
         $ArtistList = $ConcertModel->getAllArtists();
+        
+        $alert = $_GET['alert'];
+        
         require 'app/Views/form.view.php';
     }
 
@@ -21,7 +15,7 @@ class FormController
     {
         $pdo = db();
         $ConcertModel = new ConcertModel();
-
+        $status = "OK";
         $timestamp = time();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -33,14 +27,14 @@ class FormController
             $name = $_POST['name'];
             $email = $_POST['email'];
             $phone = $_POST['phone'] ?? '';
-            $simpathy = $_POST['simpathy'];
+
 
             // ConcertDB Input
             $ArtistID = $_POST['artist'];
             echo $ArtistID; //////// Problem ist, dass nicht ganzer Array-Eintrag ausgegeben wird = The Beatles --> The
 
             // OrderDB Input
-            $orderdate = date("d.m.Y", $timestamp);
+            $orderdate = date("Y.m.d", $timestamp);
             $amount = $_POST["amount"];
 
             // Bereinigen
@@ -69,10 +63,6 @@ class FormController
                 $errors[] = "Phonenumber is incorrect";
             }
 
-            if ($simpathy < 0 || $simpathy > 3) {
-                $errors[] = "Incorrect simpathy chosen";
-            }
-
             if ($amount >= 20 || $amount <= 1) {
                 $errors[] = "Amount out of range";
             }
@@ -88,10 +78,16 @@ class FormController
 
             $status = $ConcertModel->createOrder($prename, $name, $email, $phone, $ArtistID, $orderdate, $amount);
 
-            echo $status;
         }
 
-        header('LOCATION: /m307_konzerttickets/');
+        if ($status != "OK") {
+            $alert = "Failed";
+        }
+        else {
+            $alert = "Sent";
+            header('LOCATION: /m307_konzerttickets/form?alert='.$alert);
+        }
+
     }
 
     public function CalcPaymentTerm()

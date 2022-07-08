@@ -20,7 +20,7 @@
     <div class="card form">
         <div>
             <h1>Form</h1>
-            <form action="validateInputForm" id="ConcertForm">
+            <form action="validateInputForm" id="ConcertForm" method="POST">
                 <fieldset class="noborder group">
                     <legend class="invis">Person</legend>
 
@@ -48,7 +48,7 @@
                 </fieldset>
                 <fieldset class="noborder group">
                     <legend class="invis">Concert</legend>
-                    
+
                     <div class="colum">
                         <label class="incolum" for="artists">Artists:</label>
                         <select class="incolum2" name="artist" id="artist">
@@ -117,6 +117,7 @@
                     <div class="colum">
                         <label class="incolum" >Purchasing date:</label>
                         <input class="incolum0" type="date" id="purchas_export" name="purchas_export" disabled>
+                        
                     </div>
                     <div class="colum">
                         <label class="incolum" >Payment deadline:</label>
@@ -130,6 +131,11 @@
         </div>
     </div>
     <script src="./public/js/validForm.js"></script>
+    <script>
+        if (<?= $alert ?> != "") {
+            alert("<?= $alert ?>")
+        } 
+    </script>
 </body>
 
 </html>
