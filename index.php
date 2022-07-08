@@ -6,7 +6,6 @@ $routes = [
 	'/list' => 'OrderlistController@orderlist',
 	'/form' => 'FormController@form',
 	'/edit' => 'OrderlistController@edit',
-	//...
 ];
 
 $db = [
