@@ -21,7 +21,7 @@
         <form action="" method="">
         <table class="tablelist">
             <tr>
-                <th>order id <br> 🔑</th>
+                <th>id <br> 🔑</th>
                 <th>amount <br> 🛒</th>
                 <th>artist 🎤</th>
                 <th>name 📗</th>
