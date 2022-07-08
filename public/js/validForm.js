@@ -1,73 +1,87 @@
 document.getElementById('ConcertForm').onsubmit = function (evt) {
 
+    document.getElementById("name_err").innerHTML = "";
+    document.getElementById("prename_err").innerHTML = "";
+    document.getElementById("phone_err").innerHTML = "";
+    document.getElementById("email_err").innerHTML = "";
+    document.getElementById("amount_err").innerHTML = "";
     //var
     var name = document.getElementById("name").value;
     var prename = document.getElementById("prename").value;
     var phone = document.getElementById("phone").value;
     var mail = document.getElementById("email").value;
     var amount = document.getElementById("amount").value;
-    
+
+    var days
 
     var error_name;
     var error_prename;
     var error_phone;
     var error_mail;
     var error_amount;
-    
-    console.log(name);
-    console.log(prename);
-    console.log(phone);
-    console.log(mail);
-    console.log(amount);
-
-    alert("hallo1");
 
     //name
-    error_name = checkEmpty(name, "Name");
-    error_name = checklength(name, "Name", 30);
-    error_name = checkSpecialChars(name, "Name");
+    //console.log(error_name);
+    if(error_name == undefined) error_name = checkEmpty(name, "Name");
+    console.log("error_name");
+    console.log(error_name);
+    if(error_name == undefined) error_name = checklength(name, "Name", 20);
+    console.log(error_name);
+    if(error_name == undefined) error_name = checkSpecialChars(name, "Name");
+    console.log(error_name);
     //prename
-    error_prename = checkEmpty(prename, "Prename");
-    error_prename = checklength(prename, "Prename", 30);
-    error_prename = checkSpecialChars(prename, "Prename");
+    if(error_prename == undefined) error_prename = checkEmpty(prename, "Prename");
+    if(error_prename == undefined) error_prename = checklength(prename, "Prename", 30);
+    if(error_prename == undefined) error_prename = checkSpecialChars(prename, "Prename");
     //phone
-    error_phone = checkEmpty(phone, "Phone");
-    error_phone = checkPhoneNumber(phone, "Phone");
+    if(error_phone == undefined) error_phone = checkPhoneNumber(phone, "Phone");
     //mail
-    error_mail = checkEmpty(mail, "Mail");
-    error_mail = checklength(mail, "Mail", 30);
-    error_mail = checkMail(mail);
+    if(error_mail == undefined) error_mail = checkEmpty(mail, "Mail");
+    if(error_mail == undefined) error_mail = checklength(mail, "Mail", 30);
+    if(error_mail == undefined) error_mail = checkMail(mail);
     //amount
-    error_amount = checkEmpty(amount, "Amount");
-    error_amount = checkNumberBetween(amount, "Amount", 1, 20);
+    //if(error_amount == undefined) error_amount = checkNumberBetween(amount, "Amount", 1, 20);
+    //if(error_amount == undefined) error_amount = checkEmpty(amount, "Amount");
 
     
-    if (error_name != undefined || error_prename != undefined || error_phone != undefined || error_mail != undefined || error_artists != undefined || error_amount != undefined || error_simpathy != undefined) {
-        alert("hallo435345");
-        var name_err = document.getElementById("name_err");
-        var prename_err = document.getElementById("prename_err");
-        var phone_err = document.getElementById("phone_err");
-        var mail_err = document.getElementById("mail_err");
-        var amount_err = document.getElementById("amount_err");
+    if (error_name != undefined || error_prename != undefined || error_phone != undefined || error_mail != undefined || error_amount != undefined) {
 
-        alert("hallo435345ewqeqeqe");
-        name_err.innerHTML = error_name;
-        prename_err.innerHTML = error_prename;
-        phone_err.innerHTML = error_phone;
-        //mail_err.innerHTML = error_mail;
-        amount_err.innerHTML = error_amount;
-        alert("khjagfkhasjgfklaf");
+        if(error_name != undefined) document.getElementById("name_err").innerHTML = error_name;
+        if(error_prename != undefined) document.getElementById("prename_err").innerHTML = error_prename;
+        if(error_phone != undefined) document.getElementById("phone_err").innerHTML = error_phone;
+        if(error_mail != undefined) document.getElementById("email_err").innerHTML = error_mail;
+        if(error_amount != undefined) document.getElementById("amount_err").innerHTML = error_amount;
         
-        evt.preventDefault();
     }
+    else{
+        document.getElementById("name_export").value = document.getElementById("name").value;
+        document.getElementById("prename_export").value = document.getElementById("prename").value;
+        document.getElementById("phone_export").value = document.getElementById("phone").value;
+        document.getElementById("email_export").value = document.getElementById("email").value;
+        document.getElementById("amount_export").value = document.getElementById("amount").value;
+
+        if(document.getElementById("simpathy").value == 0) days = 30;
+        else if(document.getElementById("simpathy").value == 1) days = 20;
+        else if(document.getElementById("simpathy").value == 2) days = 15;
+        else if(document.getElementById("simpathy").value == 3) days = 10;
+
+        var eArt = document.getElementById("artist");
+        var eSim = document.getElementById("simpathy");
+
+        document.getElementById("artist_export").value = eArt.options[eArt.selectedIndex].text;
+        document.getElementById("simpathy_export").value = eSim.options[eSim.selectedIndex].text +" (="+ days + " days)";
+        document.getElementById("purchas_export").value = new Date().toISOString().slice(0, 10);
+
+
+
+        document.getElementById("payment_export").value = addDays(document.getElementById("purchas_export").value, days)
+    }
+    evt.preventDefault();
 }
 
 
-
-
-
 function checkEmpty(obj, objName) {
-    if (obj.length == undefined) {
+    if (obj.length == 0) {
         return objName + " can not be empty";
     }
 }
@@ -85,6 +99,7 @@ function checkSpecialChars(obj, objName) {
 
     for (const c of obj) {
         if (specialChars.includes(c)) nameIsSpecialCharsProof = false;
+        console.log(specialChars.includes(c))
     }
 
     if (!IsSpecialCharsProof) {
@@ -115,9 +130,16 @@ function checkMail(obj) {
 }
 
 function checkNumberBetween(obj, objName, min, max) {
-    if (obj >= min) {
-        return objName + " is too small";
-    } else if (obj <= max) {
+    if (obj <= min) {
         return objName + " is too large";
+    } else if (obj >= max) {
+        return objName + " is too small";
     }
+}
+
+
+function addDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result.toISOString().slice(0, 10);
 }
