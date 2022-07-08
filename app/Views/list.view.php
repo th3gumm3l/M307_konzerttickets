@@ -12,13 +12,12 @@
 </head>
 
 <body class="background">
-    <nav class="card">
-        <a class="navlink" href="./formView.view.php">Formular</a>
-        <a class="navlink" href="./orderlist.view.php">Order List</a>
+<nav class="card">
+        <a class="navlink" href="/m307_konzerttickets/form">Formular</a>
+        <a class="navlink" href="/m307_konzerttickets/list">Order List</a>
     </nav>
     <div class="card edit">
         <h1>List</h1>
-        <form action="" method="">
         <table class="tablelist">
             <tr>
                 <th>id <br> 🔑</th>
@@ -28,42 +27,41 @@
                 <th>prename 📘</th>
                 <th>mail 📧</th>
                 <th>phone 📱</th>
-                <th>order date <br> 📅</th>
-                <th>payment date <br> ⌛</th>
-                <th>over due <br> ⏳</th>
+                <th>order date 📅</th>
+                <th>payment date ⌛</th>
+                <th>over due ⏳</th>
                 <th>payed <br> 💷</th>
                 <th>edit ⚙</th>
             </tr>
 
-            <?php for($i = 0; $i < count($AllNames);$i++) : ?>
+            <?php foreach ($orders as $order): ?>
             <tr>
-                <td><?= $rOrderID[$i]['OrderID'];?></td>
-                <td><?= $rAmount[$i]['Amount'];?></td>
-                <td><?= $rArtist[$i]['Artist'];?></td>
-                <td><?= $rName[$i]['Name'];?></td>
-                <td><?= $rPrename[$i]['Prename'];?></td>
-                <td><a href="/M307_Projektarbeit/formular//bearbeiten?id=<?=$AllAufträge[$i]['id']?>">Bearbeiten</a></td>
-                <td><a href="/M307_Projektarbeit/formular/löschen?id=<?=$AllAufträge[$i]['id']?>">Löschen</a></td>
+                <td><?= $order['id'];?></td>
+                <td><?= $order['amount'];?></td>
+                <td><?= $artistlist[$order['fk_concertID']];?></td>
+                <td><?= $usernames[$order['fk_userID']];?></td>
+                <td><?= $userprenames[$order['fk_userID']];?></td>
+                <td><?= $useremails[$order['fk_userID']];?></td>
+                <td><?= $userphones[$order['fk_userID']];?></td>
+                <td><?= $order['orderdate'];?></td>
+                <td><?= $order['paymentdate'];?></td>
+                <td><?= $order['overdue'];?></td>
+                <td>
+                    <?php
+                    if ($order['payed'] == 0) {
+                        $payStatus = "⏳";
+                    }                    
+                    if ($order['payed'] == 1) {
+                        $payStatus = "⌛";
+                    }
+                    ?> 
+                    <?= $payStatus;?>
+                </td>
+                <td><a href="/m307_konzerttickets/editview?orderid=<?= $order['id'];?>&userid=<?= $order['fk_userID'];?>&payed=<?= $payStatus;?>">Bearbeiten</a></td>
             </tr>
-            <?php endfor; ?>
+            <?php endforeach; ?>
 
-            <tr>
-                <td><?= $rOrderID ?></td>
-                <td><?= $rAmount ?></td>
-                <td><?= $rArtist ?></td>
-                <td><?= $rName ?></td>
-                <td><?= $rPrename ?></td>
-                <td><?= $rMail ?></td>
-                <td><?= $rPhone ?></td>
-                <td><?= $rOrderDate ?></td>
-                <td><?= $rPaymentDate ?></td>
-                <td><?= $rOverDue ?></td>
-                <td><?= $rPayed ?></td>
-                <td><?= $rEdit ?></td>
-            </tr>
         </table>
-        <input class="r-up-btn" type="submit" name="submit" value="Save">
-        </form>
     </div>
 </body>
 

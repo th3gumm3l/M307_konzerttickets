@@ -34,7 +34,6 @@ class FormController
 
             // ConcertDB Input
             $ArtistID = $_POST['artist'];
-            echo $ArtistID; //////// Problem ist, dass nicht ganzer Array-Eintrag ausgegeben wird = The Beatles --> The
 
             // OrderDB Input
             $orderdate = date("Y.m.d", $timestamp);
@@ -70,7 +69,6 @@ class FormController
                 $errors[] = "Amount out of range";
             }
 
-            ///////////// Fehler Ausgabe noch machen
             if (count($errors) != 0) {
                 $alert = "Failed";
                 header('LOCATION: /m307_konzerttickets/form?alert='.$alert);
@@ -89,10 +87,5 @@ class FormController
             header('LOCATION: /m307_konzerttickets/form?alert='.$alert);
         }
 
-    }
-
-    public function CalcPaymentTerm()
-    {
-        # code...
     }
 }

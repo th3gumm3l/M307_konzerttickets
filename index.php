@@ -5,7 +5,8 @@ $routes = [
 	'/validateInputForm' => 'FormController@validateInputForm',
 	'/list' => 'OrderlistController@orderlist',
 	'/form' => 'FormController@form',
-	'/edit' => 'OrderlistController@edit',
+	'/editview' => 'EditController@insertOrder',
+	'/edit' => 'EditController@edit',
 ];
 
 $db = [

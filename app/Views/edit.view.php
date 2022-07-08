@@ -13,56 +13,42 @@
 
 <body class="background">
     <nav class="card">
-        <a class="navlink" href="./formView.view.php">Formular</a>
-        <a class="navlink" href="./orderlist.view.php">Order List</a>
+        <a class="navlink" href="/m307_konzerttickets/form">Formular</a>
+        <a class="navlink" href="/m307_konzerttickets/list">Order List</a>
     </nav>
     <div class="card edit">
         <h1>Edit</h1>
-        <table>
-            <tr>
-                <th>order id <br> 🔑</th>
-                <th>amount <br> 🛒</th>
-                <th>artist 🎤</th>
-                <th>name 📗</th>
-                <th>prename 📘</th>
-                <th>mail 📧</th>
-                <th>phone 📱</th>
-                <th>order date <br> 📅</th>
-                <th>payment date <br> ⌛</th>
-                <th>over due <br> ⏳</th>
-                <th>payed <br> 💷</th>
-            </tr>
-            <!-- php -->
-            <tr>
-                <td class="bg-gray">value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
+        <form action="edit?userid=<?=$userid?>&orderid=<?=$orderid?>" method="post">
+            <table>
+                <tr>
+                    <th>order id 🔑</th>
+                    <th>name 📗</th>
+                    <th>prename 📘</th>
+                    <th>mail 📧</th>
+                    <th>phone 📱</th>
+                    <th>payed 💷</th>
+                </tr>
 
-            </tr>
-            <tr>
-                <td><input type="number" name="orderid" id="orderid"></td>
-                <td><input type="number" name="orderid" id="orderid"></td>
-                <td><input type="text" name="" id=""></td>
-                <td><input type="text" name="" id=""></td>
-                <td><input type="text" name="" id=""></td>
-                <td><input type="email" name="" id=""></td>
-                <td><input type="tel" name="" id=""></td>
-                <td><input type="date" name="" id=""></td>
-                <td><input type="date" name="" id=""></td>
-                <td>Yes / No (calc)</td>
-                <td><input type="checkbox" name="" id=""></td>
+                <tr>
+                    <td> <?= $orderid ?> </td>
+                    <td> <?= $username ?> </td>
+                    <td> <?= $userprename ?> </td>
+                    <td> <?= $useremail ?> </td>
+                    <td> <?= $userphone ?> </td>
+                    <td> <?= $paystatus ?> </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input class="tableeditweight" type="text" name="nameedit" id="nameedit"></td>
+                    <td><input class="tableeditweight" type="text" name="prenameedit" id="prenameedit"></td>
+                    <td><input class="tableeditweight" type="email" name="mailedit" id="mailedit"></td>
+                    <td><input class="tableeditweight" type="tel" name="phoneedit" id="phoneedit"></td>
+                    <td><input class="tableeditweight" type="checkbox" name="payed" value="payed" id="payededit"></td>
+                </tr>
+            </table>
 
-            </tr>
-            <!-- php -->
-        </table>
+            <input type="submit" value="Change" name="submitnew" id="submitnew">
+        </form>
     </div>
 </body>
 

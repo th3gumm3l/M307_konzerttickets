@@ -61,6 +61,7 @@ nav{
 }
 
 .card.edit{
+    overflow-x: scroll;
     position: relative;
     padding: 20px 40px;
     border-radius: 12px;
@@ -80,6 +81,10 @@ button{
     font-size: 1rem;
     font-weight: 500;
     padding: 6px 10px 6px 10px;
+}
+
+.tableeditweight{
+    width: 100px;
 }
 
 .wid100{

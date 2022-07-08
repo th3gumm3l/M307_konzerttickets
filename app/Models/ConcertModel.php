@@ -58,9 +58,31 @@ class ConcertModel
         }
     }
 
-    public function update()
+    public function update(int $userid, int $orderid, string $newusername,string $newuserprename, string $newuseremail, string $newuserphone, int $newpaystatus)
     {
-        # code...
+        $pdo = db();
+
+        try {
+            $statementOrder = $pdo->prepare('UPDATE orders SET payed=:payed WHERE id=:id');
+            $statementOrder->bindParam(':payed', $newpaystatus);
+            $statementOrder->bindParam(':id', $orderid);
+            $statementOrder->execute();
+
+            $statementUser = $pdo->prepare('UPDATE users SET prename = :prename, `name`= :name, email = :email, phone = :phone WHERE id=:id');
+            $statementUser->bindParam(':prename', $newuserprename);
+            $statementUser->bindParam(':name', $newusername);
+            $statementUser->bindParam(':email', $newuseremail);
+            $statementUser->bindParam(':prename', $newuserprename);
+            $statementUser->bindParam(':id', $userid);
+            $statementUser->execute();
+
+            $status = "OK";
+            return $status;
+        } 
+        catch (\Throwable $th) {
+            $status = "Failed";
+            return $status;
+        }
     }
 
 }
