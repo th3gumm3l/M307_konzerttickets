@@ -55,7 +55,6 @@ nav{
 .card.form{
     padding: 40px;
     border-radius: 12px;
-    width: 50%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -97,8 +96,17 @@ button{
 
 .point{
     cursor: pointer;
+    margin-top: 10px;
+    margin-left: 90px;
 }
-
+.nopoint{
+    margin-top: 10px;
+    margin-left: 90px;
+}
+.btnOverview{
+    padding-left: 22px;
+    padding-right: 23px;
+}
 
 table {
     border-top: solid 1px #000;
@@ -139,17 +147,30 @@ td, th, tr {
     background-color: #33333369;
 }
 
-
 fieldset{
     width: 100%;
 }
 
 .colum{
-
+    display: flex;
     width: 100%;
 }
 
+.incolum{
+    width: 90px;
+}
 
+.incolum0{
+    width: 200px;
+}
+
+.incolum1{
+    width: 150px;
+}
+
+.incolum2{
+    width: 222px;
+}
 
 
 ::-webkit-scrollbar {
