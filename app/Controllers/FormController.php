@@ -1,6 +1,7 @@
 <?php
 class FormController
-{
+{   
+    
     public function formMain()
     {
         $ConcertModel = new ConcertModel();
@@ -8,7 +9,7 @@ class FormController
 
         require 'app/Views/formView.view.php';
     }
-    
+
     public function form()
     {
         $ConcertModel = new ConcertModel();
