@@ -158,4 +158,20 @@ function btnDiscardKlick(){
     document.getElementById("amount").removeAttribute('disabled');
     document.getElementById("artist").removeAttribute('disabled');
     document.getElementById("simpathy").removeAttribute('disabled');
+
+    document.getElementById("name").value = "";
+    document.getElementById("prename").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("amount").value = "";
+
+    document.getElementById("name_export").value = "";
+    document.getElementById("prename_export").value = "";
+    document.getElementById("phone_export").value = "";
+    document.getElementById("email_export").value = "";
+    document.getElementById("amount_export").value = "";
+    document.getElementById("artist_export").value = "";
+    document.getElementById("simpathy_export").value = "";
+    document.getElementById("purchas_export").value = "";
+    document.getElementById("payment_export").value = "";
 }

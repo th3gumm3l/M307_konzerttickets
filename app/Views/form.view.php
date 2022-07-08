@@ -125,7 +125,7 @@
                     </div>
 
                 </fieldset>
-                <button id="btnDiscard" class="point btnOverview" onclick="btnDiscardKlick()" disabled>Discard</button>
+                <button type="button" id="btnDiscard" class="point btnOverview" onclick="btnDiscardKlick()" disabled>Discard</button>
                 <input id="btnTransmit" class="btnOverview" type="submit" name="submit" value="Transmit" disabled>
             </form>
         </div>
