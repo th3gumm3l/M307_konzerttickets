@@ -34,9 +34,20 @@
                 <th>payed <br> 💷</th>
                 <th>edit ⚙</th>
             </tr>
-            <?php foreach ($ColumList as $Colum): ?>
-                <tr>
-                <?php foreach ($Rowlist as $Row): ?>
+
+            <?php for($i = 0; $i < count($AllNames);$i++) : ?>
+            <tr>
+                <td><?= $rOrderID[$i]['OrderID'];?></td>
+                <td><?= $rAmount[$i]['Amount'];?></td>
+                <td><?= $rArtist[$i]['Artist'];?></td>
+                <td><?= $rName[$i]['Name'];?></td>
+                <td><?= $rPrename[$i]['Prename'];?></td>
+                <td><a href="/M307_Projektarbeit/formular//bearbeiten?id=<?=$AllAufträge[$i]['id']?>">Bearbeiten</a></td>
+                <td><a href="/M307_Projektarbeit/formular/löschen?id=<?=$AllAufträge[$i]['id']?>">Löschen</a></td>
+            </tr>
+            <?php endfor; ?>
+
+            <tr>
                 <td><?= $rOrderID ?></td>
                 <td><?= $rAmount ?></td>
                 <td><?= $rArtist ?></td>
@@ -49,166 +60,7 @@
                 <td><?= $rOverDue ?></td>
                 <td><?= $rPayed ?></td>
                 <td><?= $rEdit ?></td>
-                <?php endforeach; ?>
             </tr>
-                <option value= <?= $artist['artist'] ?> > <?= $artist['artist'] ?> </option>
-            <?php endforeach; ?>
-            <!-- php -->
-            <tr>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-            </tr>
-            <tr>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-            </tr>
-            <tr>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-            </tr>
-            <tr>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-            </tr>
-            <tr>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-            </tr>
-            <tr>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-            </tr>
-            <tr>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-            </tr>
-            <tr>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-            </tr>
-            <tr>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-            </tr>
-            <tr>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-            </tr>
-            <tr>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-                <td>value</td>
-            </tr>
-            <!-- php -->
         </table>
         <input class="r-up-btn" type="submit" name="submit" value="Save">
         </form>
