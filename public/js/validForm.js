@@ -19,13 +19,13 @@
             var error_amount;
             var error_simpathy;
 
-            console.log(name);
-            console.log(prename);
-            console.log(phone);
-            console.log(mail);
-            console.log(artists);
-            console.log(amount);
-            console.log(simpathy);
+            // console.log(name);
+            // console.log(prename);
+            // console.log(phone);
+            // console.log(mail);
+            // console.log(artists);
+            // console.log(amount);
+            // console.log(simpathy);
 
             //name
             error_name = checkEmpty(name, "Name");
@@ -47,15 +47,20 @@
             //amount
             error_amount = checkEmpty(amount, "Amount");
             error_amount = checkNumberBetween(amount, "Amount", 1, 20);
-            //simpathy
-            error_simpathy = checkEmpty(simpathy, "Simpathy");
 
             if(error_name != undefined || error_prename != undefined || error_phone != undefined || error_mail != undefined || error_artists != undefined || error_amount != undefined || error_simpathy != undefined){
                 var name_err = document.getElementById("name_err");
                 var prename_err = document.getElementById("prename_err");
                 var phone_err = document.getElementById("phone_err");
                 var mail_err = document.getElementById("mail_err");
+                var amount_err = document.getElementById("amount_err");
                 
+                name_err.innerText = error_name;
+                prename_err.innerText = error_prename;
+                phone_err.innerText = error_phone;
+                mail_err.innerText = error_mail;
+                amount_err.innerText = error_amount;
+
                 evt.preventDefault();
             }
         }
