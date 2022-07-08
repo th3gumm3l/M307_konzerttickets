@@ -22,7 +22,7 @@ class ConcertModel
     }
 
 
-    public function createOrder(string $prename, string $name, string $email, string $phone, int $ArtistID, string $orderdate, int $amount)
+    public function createOrder(string $prename, string $name, string $email, string $phone, string $ArtistID, string $orderdate, int $amount)
     {
         $pdo = db();
         // Verarbeiten
@@ -35,6 +35,12 @@ class ConcertModel
         $statementUsers->execute();
 
         $latestUserID = $pdo->lastInsertId();
+
+        $statementartist = $pdo->prepare("SELECT id FROM artists WHERE artist=:artist");
+        $statementartist->bindParam(':artist', $ArtistID);
+        $statementartist->execute();
+        echo $statementartist;
+
         $paymentterm = 0; //Wird noch ausprogrammiert
 
         $statementOrders = $pdo->prepare('INSERT INTO orders (orderdate, amount, paymentterm, fk_concertID, fk_userID) VALUES (:orderdate, :amount, :paymentterm, :fk_concertID, :fk_userID)');

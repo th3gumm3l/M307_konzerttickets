@@ -53,7 +53,7 @@
                         <label class="incolum" for="artists">Artists:</label>
                         <select class="incolum2" name="artist" id="artist">
                             <?php foreach ($ArtistList as $artist) : ?>
-                                <option value=<?php $artist['id'] ?>> <?= $artist['artist'] ?> </option>
+                                <option value=<?= $artist['id'] ?>> <?= $artist['artist'] ?> </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
