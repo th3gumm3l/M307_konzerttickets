@@ -22,7 +22,7 @@ class ConcertModel
     }
 
 
-    public function createOrder(string $prename, string $name, string $email, string $phone, $ArtistID, string $orderdate, int $amount)
+    public function createOrder(string $prename, string $name, string $email, string $phone, int $ArtistID, string $orderdate, int $amount)
     {
         $pdo = db();
         // Verarbeiten
