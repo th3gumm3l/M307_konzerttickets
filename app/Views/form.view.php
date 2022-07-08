@@ -56,7 +56,6 @@
                                 <option value=<?= $artist['id'] ?>> <?= $artist['artist'] ?> </option>
                             <?php endforeach; ?>
                         </select>
-                        <p class="incolum1" id="artist_err"></p>
                     </div>
                     <div class="colum">
                         <label class="incolum" for="amount">Amount:</label>
