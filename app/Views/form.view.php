@@ -83,19 +83,19 @@
 
                     <div class="colum">
                         <label class="incolum" for="name">Name:</label>
-                        <input class="incolum0" type="text" id="name_export" name="name_export" disabled>
+                        <input class="incolum0" type="text" id="name_export" name="name_export" readonly>
                     </div>
                     <div class="colum">
                         <label class="incolum">Prename:</label>
-                        <input class="incolum0" type="text" id="prename_export" name="prename_export" disabled>
+                        <input class="incolum0" type="text" id="prename_export" name="prename_export" readonly>
                     </div>
                     <div class="colum">
                         <label class="incolum">Phone:</label>
-                        <input class="incolum0" type="text" id="phone_export" name="phone_export" disabled>
+                        <input class="incolum0" type="text" id="phone_export" name="phone_export" readonly>
                     </div>
                     <div class="colum">
                         <label class="incolum">Email:</label>
-                        <input class="incolum0" type="email" id="email_export" name="email_export" disabled>
+                        <input class="incolum0" type="email" id="email_export" name="email_export" readonly>
                     </div>
 
                 </fieldset>
@@ -104,36 +104,33 @@
 
                     <div class="colum">
                         <label class="incolum">Artists:</label>
-                        <input class="incolum0" type="text" id="artist_export" name="artist_export" disabled>
+                        <input class="incolum0" type="text" id="artist_export" name="artist_export" readonly>
                     </div>
                     <div class="colum">
                         <label class="incolum">Amount:</label>
-                        <input class="incolum0" type="number" name="amount_export" id="amount_export" min="1" disabled>
+                        <input class="incolum0" type="number" name="amount_export" id="amount_export" min="1" readonly>
                     </div>
                     <div class="colum">
                         <label class="incolum">Simpathy:</label>
-                        <input class="incolum0" type="text" id="simpathy_export" name="simpathy_export" disabled>
+                        <input class="incolum0" type="text" id="simpathy_export" name="simpathy_export" readonly>
                     </div>
                     <div class="colum">
                         <label class="incolum">Purchasing date:</label>
-                        <input class="incolum0" type="text" id="purchas_export" name="purchas_export" disabled>
+                        <input class="incolum0" type="text" id="purchas_export" name="purchas_export" readonly>
 
                     </div>
                     <div class="colum">
                         <label class="incolum">Payment deadline:</label>
-                        <input class="incolum0" type="text" id="payment_export" name="payment_export" disabled>
+                        <input class="incolum0" type="text" id="payment_export" name="payment_export" readonly>
                     </div>
 
                 </fieldset>
-                <button type="button" id="btnDiscard" class="point btnOverview" onclick="btnDiscardKlick()" disabled>Discard</button>
-                <input id="btnTransmit" class="btnOverview" type="submit" name="submit" value="Transmit" disabled>
+                <button type="button" id="btnDiscard" class="point btnOverview" onclick="btnDiscardKlick()" readonly>Discard</button>
+                <input id="btnTransmit" class="btnOverview" type="submit" name="submit" value="Transmit" readonly>
             </form>
         </div>
     </div>
     <script src="./public/js/validForm.js"></script>
-    <script>
-        alert("<?= $alert ?>");
-    </script>
 </body>
 
 </html>

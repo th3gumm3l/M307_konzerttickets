@@ -6,11 +6,6 @@ class FormController
         $ConcertModel = new ConcertModel();
         $ArtistList = $ConcertModel->getAllArtists();
         
-        $alertvar = $_GET['alert'] ?? null;
-        if ($alertvar != null) {
-            $alert = $alertvar;
-        }
-        
         require 'app/Views/form.view.php';
         
     }
@@ -70,22 +65,14 @@ class FormController
             }
 
             if (count($errors) != 0) {
-                $alert = "Failed";
-                header('LOCATION: /m307_konzerttickets/form?alert='.$alert);
+                $errors[] = "Failed";
             }
 
-            $status = $ConcertModel->createOrder($prename, $name, $email, $phone, $ArtistID, $orderdate, $amount);
+            $ConcertModel->createOrder($prename, $name, $email, $phone, $ArtistID, $orderdate, $amount);
 
         }
 
-        if ($status != "OK") {
-            $alert = "Failed";
-            header('LOCATION: /m307_konzerttickets/form?alert='.$alert);
-        }
-        else {
-            $alert = "Sent";
-            header('LOCATION: /m307_konzerttickets/form?alert='.$alert);
-        }
+        header('LOCATION: /m307_konzerttickets/form');
 
     }
 }
