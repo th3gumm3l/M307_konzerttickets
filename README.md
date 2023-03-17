@@ -103,18 +103,51 @@ WENN &emsp; Ich auf den «Löschen» Text drücke <br>
 DANN &emsp; wird mir dieser Kaufeintrag gelöscht <br>
 STATUS &emsp; Nicht erfüllt <br>
 
-8.	GEGEBEN SEI		Ich bin auf der Kauf-Seite
-WENN			Ich die Ticket-Käufe ansehe
-DANN	wird ersichtlich, ob der Kauf schon bezahlt ist oder noch nicht. Zusätzlich wird mir die Frist angezeigt
-STATUS	Erfüllt
+8.
+GEGEBEN SEI &emsp; Ich bin auf der Kauf-Seite <br>
+WENN &emsp; Ich die Ticket-Käufe ansehe <br>
+DANN &emsp; wird ersichtlich, ob der Kauf schon bezahlt ist oder noch nicht. Zusätzlich wird mir die Frist angezeigt <br>
+STATUS &emsp; Erfüllt <br>
 
+9.
+GEGEBEN SEI &emsp; Ich bin auf der Kauf-Seite <br>
+WENN &emsp; Ich schon bezahlte Käufe abhaken will <br>
+DANN &emsp; kann ich mehrere Käufe auswählen und über einen Button bestätigen, dass jene bezahlt, wurden <br> 
+STATUS &emsp; Nicht erfüllt <br>
 
-9.	GEGEBEN SEI		Ich bin auf der Kauf-Seite
-WENN			Ich schon bezahlte Käufe abhaken will
-DANN	kann ich mehrere Käufe auswählen und über einen Button bestätigen, dass jene bezahlt, wurden 
-STATUS	Nicht erfüllt
+10.	
+GEGEBEN SEI &emsp; Ich bin auf der Kauf-Seite <br>
+WENN &emsp; Ich die Käufe bestätigt habe <br>
+DANN &emsp; werden diese nicht aus der Datenbank gelöst, nur nicht angezeigt <br>
+STATUS &emsp; Nicht erfüllt <br>
 
-10.	GEGEBEN SEI		Ich bin auf der Kauf-Seite
-WENN			Ich die Käufe bestätigt habe
-DANN	werden diese nicht aus der Datenbank gelöst, nur nicht angezeigt
-STATUS	Nicht erfüllt
+## Roadmap
+### Donnerstag
+#### Erledigt / Status?
+- Konzeptionierung für Projekt gemacht und abgegeben
+- GitHub Repository erstellt
+&emsp; Öffentlich gemacht
+&emsp; Gruppenmitglied hinzugefügt
+- Dokumentationsdatei erstellt und mit Gruppenpartner geteilt
+#### Tagesziele
+- MVC Prinzip (Framework.zip) anwenden und Ordnerstruktur erstellen
+- Lokale Datenbank über PhpMyAdmin erstellen
+- Datenbank mit Preisen ergänzen und die Kauf-Tabelle ergänzen
+- Views für oben genannte Sitemaps erstellen
+- Router kann auf Kontroller zugreifen und verarbeitet das erwünschte
+- Eventuell JavaScript Funktionen schreiben
+- Meeting vereinbaren mit Kursleiter
+
+### Freitag
+#### Erledigt / Status?
+- Zwischenstand präsentiert
+- MVC Konzept mit Ordnerstrukturen aufgebaut und bereits Views erstellt
+- Router leitet korrekt weiter
+- Datenbank eingerichtet
+- Kontroller verarbeitet schon einzelne Funktionen
+#### Tagesziele
+- Kontroller vervollständigen
+- Dokumentation komplementieren
+- Testfälle prüfen
+- Projekt abschliessen, allenfalls überarbeiten
+- Präsentation vorbereiten und halten
