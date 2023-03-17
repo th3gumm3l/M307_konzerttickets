@@ -40,3 +40,21 @@
 - Mindestens 14 Jahre, maximal 99 Jahre
 ### Konzert
 - Eingabe stimmt mit den Vorgaben überein.
+
+## Datenbank
+### User Tabelle:
+-	ID (Auto_Increment, Int, Primary Key)
+-	Name (Varchar (255))
+-	Prename (Varchar (255))
+-	E-Mail (Varchar (255))
+-	Phone (Varchar (255), Can be Null)
+#### Kauf Tabelle:
+-	ID (Auto_Increment, Int, Primary Key)
+-	Artist ID (Int, FK)
+-	Zahlungsstatus (Boolean)
+-	Kaufdatum (Date)
+-	User ID (Int, FK)
+-	Overdue (Boolean)
+### Konzerte Tabelle:
+-	ID (Auto_Increment, Int, Primary Key)
+-	Artist (Varchar (255), NOT NULL)
