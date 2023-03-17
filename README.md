@@ -24,3 +24,19 @@
 ### Zahlung bestätigen
 - /edit
 - Soll die Funktion im Kontroller sein, um die ausgewählten Käufe auf der Kaufseite, als bezahlt zu vermerken und sie auszublenden, jedoch nicht aus der Datenbank entfernen.
+
+## Validierung-Formular
+### Name
+- Keine Sonderzeichen
+- Keine Zahlen
+- trim()
+### E-Mail
+- Enthält ein “@“ und danach ein “. “, korrekte E-Mail-Struktur
+- trim()
+### Nummer
+- Besteht nur aus Nummern, Leerzeichen und folgenden Symbolen: + / - ) (
+- trim()
+### Alter
+- Mindestens 14 Jahre, maximal 99 Jahre
+### Konzert
+- Eingabe stimmt mit den Vorgaben überein.
